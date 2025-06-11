@@ -7,7 +7,7 @@ import json
 
 class Producto(object):
 
-    tipos_productos = {1: 'Libro', 2: 'Electrónico', 3: 'Ropa'}
+    tipos_productos = {1: 'Libro', 2: 'Electronico', 3: 'Ropa'}
    
     """
     Representa un producto individual con su tipo, cantidad y precio.
@@ -32,7 +32,7 @@ class Producto(object):
         subtotal = self.calcular_subtotal()
         impuesto = 0.0
 
-        if self.tipo == 'Electrónico':
+        if self.tipo == 'Electronico':
             impuesto = subtotal * 0.16
         elif self.tipo == 'Ropa':
             impuesto = subtotal * 0.08
