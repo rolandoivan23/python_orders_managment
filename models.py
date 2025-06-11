@@ -103,10 +103,7 @@ class Pedido(object):
             datos_pedido[clave.strip()] = valor.strip()
 
             if(clave == 'Productos'):
-                #datos_pedido[clave.strip()] = Pedido._Pedido__get_total_productos(datos_pedido.get('Productos', ""))
-                #cantidad_total, productos_str = Pedido._parsear_info_productos(datos_pedido['Productos'])
-                #datos_pedido['Total Articulos'] = cantidad_total
-                datos_pedido['Productos'] = len(json.loads(datos_pedido['Productos']))
+                datos_pedido['Productos'] = json.loads(datos_pedido['Productos'])
 
         
         return datos_pedido

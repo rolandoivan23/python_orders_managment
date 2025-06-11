@@ -3,7 +3,7 @@ from models import Pedido
 from io_operations import *
 
 def print_order(pedido, numero_pedido):
-	print "\nPedido #%d" % (1)	
+	print "\nPedido #%d" % (numero_pedido + 1)	
 	print "  Cliente: %s" % pedido.cliente_nombre
 	print "  Fecha: %s" % pedido.fecha.strftime('%Y-%m-%d')
 	print "  Numero total de productos: %d" % pedido.total_articulos()
@@ -24,9 +24,15 @@ def generar_reporte(pedidos_registrados):
        	if(len(pedidos_archivo) > 0):
        		hay_pedidos_mostrados = True
 
+       	
+
        	#Por cada línea del archivo(cada pedido) se regresa un diccionario con su información.
         for i, linea in enumerate(pedidos_archivo):        	
-            imprimir_producto_de_archivo(Pedido.deserializar_linea(linea))
+        	datos_pedido = Pedido.deserializar_linea(linea)
+        	pedido = Pedido(datos_pedido['Cliente'])
+        	for producto in datos_pedido['Productos']:
+        		pedido.agregar_producto(Producto(producto['nombre'], producto['tipo'], producto['cantidad'], producto['precio']))	
+            	print_order(pedido, i)
             
     except IOError:
         # Si el archivo no existe, simplemente no se muestra esta seccion.
@@ -38,21 +44,9 @@ def generar_reporte(pedidos_registrados):
         return
 
     for i, pedido in enumerate(pedidos_registrados):
-        print_order(pedido, i)
+        print_order(pedido, i + len(pedidos_archivo))
 
     print "\n--- Fin del Reporte ---"
-
-
-def imprimir_producto_de_archivo(datos_pedido):
-    #si existe un problema de parseo la llave Error estara presente en el diccionario 
-    if 'Error' in datos_pedido:
-        print "  Error al leer línea: %s" % datos_pedido['Linea']
-    else:
-        # Se imprimen los datos deserializados de forma ordenada
-        print "  Cliente: %s" % datos_pedido.get('Cliente', 'N/A')
-        print "  Fecha: %s" % datos_pedido.get('Fecha', 'N/A')
-        print "  Total: $%s" % datos_pedido.get('Total', 'N/A')
-        print "  Número total de productos: %s" % datos_pedido.get('Productos', 'N/A')
 
 
 def guardar_pedidos(pedidos):
