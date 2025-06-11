@@ -1,3 +1,4 @@
-Cliente: a | Fecha: 2025-06-10 16:41:46 | Total: 10.00 | Productos: [a (x1)]
-Cliente: a | Fecha: 2025-06-10 16:54:36 | Total: 11.60 | Productos: [a (x1)]
-Cliente: 1 | Fecha: 2025-06-10 17:31:25 | Total: 1.00 | Productos: [1 (x1)]
+Cliente: a | Fecha: 2025-06-10 22:01:29 | Total: 5.50 | Productos: [{ "nombre": "a", "cantidad": 1, "tipo": "Libro", "precio": 5.500000 }]
+Cliente: b | Fecha: 2025-06-10 22:02:24 | Total: 4.64 | Productos: [{ "nombre": "b", "cantidad": 2, "tipo": "Electrónico", "precio": 2.000000 }]
+Cliente: c | Fecha: 2025-06-10 22:05:06 | Total: 2.00 | Productos: [{ "nombre": "c", "cantidad": 1, "tipo": "Libro", "precio": 1.000000 }, { "nombre": "d", "cantidad": 1, "tipo": "Libro", "precio": 1.000000 }]
+Cliente: Rolando | Fecha: 2025-06-10 22:06:22 | Total: 118.69 | Productos: [{ "nombre": "x", "cantidad": 10, "tipo": "Ropa", "precio": 10.990000 }]

@@ -3,6 +3,7 @@
 # Habilita la division de punto flotante por defecto, crucial para calculos.
 from __future__ import division
 import datetime
+import json
 
 class Producto(object):
 
@@ -40,7 +41,7 @@ class Producto(object):
 
     def __str__(self):
         """Representacion en string del producto."""
-        return '%s (x%d)' % (self.nombre, self.cantidad)
+        return "{ \"nombre\": \"%s\", \"cantidad\": %d, \"tipo\": \"%s\", \"precio\": %f }" % (self.nombre, self.cantidad, self.tipo, self.precio_unitario)
 
 
 class Pedido(object):
@@ -95,43 +96,17 @@ class Pedido(object):
         Debido al formato simple, los productos no se reconstruyen como objetos.
         """
         datos_pedido = {}
-        try:
-            partes = linea.strip().split(' | ')
-            for parte in partes:
-                clave, valor = parte.split(': ', 1)
-                datos_pedido[clave.strip()] = valor.strip()
 
-                if(clave == 'Productos'):
-                   datos_pedido[clave.strip()] = Pedido._Pedido__get_total_productos(datos_pedido.get('Productos', ""))
+        partes = linea.strip().split(' | ')
+        for parte in partes:
+            clave, valor = parte.split(': ', 1)
+            datos_pedido[clave.strip()] = valor.strip()
 
+            if(clave == 'Productos'):
+                #datos_pedido[clave.strip()] = Pedido._Pedido__get_total_productos(datos_pedido.get('Productos', ""))
+                #cantidad_total, productos_str = Pedido._parsear_info_productos(datos_pedido['Productos'])
+                #datos_pedido['Total Articulos'] = cantidad_total
+                datos_pedido['Productos'] = len(json.loads(datos_pedido['Productos']))
 
-        except (ValueError, IndexError):
-            # Si una linea no tiene el formato esperado, se devuelve un diccionario
-            # indicando el error para que el reporte lo pueda manejar.
-            return {'Error': 'Formato de linea invalido', 'Linea': linea.strip()}
         
         return datos_pedido
-
-
-    @staticmethod
-    def __get_total_productos(str_productos):
-        contenido_limpio = str_productos.strip('[]')
-
-        # Separar cada producto por la coma. Ejemplo: 'a (x1), b(x3)' -> ['a (x1)', 'b(x3)']
-        productos_individuales = contenido_limpio.split(', ')
-        
-        cantidad_total = 0
-        for item in productos_individuales:
-            try:
-                #Separar el nombre de la cantidad por el parentesis. Ejemplo: 'b(x3)' -> ['b', 'x3)']
-                partes_producto = item.split('(')
-                
-                # Limpiar y convertir la cantidad a numero
-                cantidad_str = partes_producto[1].strip('x)')
-                cantidad_total = int(cantidad_str)
-                
-            except (IndexError, ValueError):
-                # Ignorar si alguna parte del string no tiene el formato correcto
-                pass
-
-        return cantidad_total
