@@ -14,12 +14,16 @@ def leer_nombre_producto():
 
 def leer_tipo_producto():
 	while True:
-	    tipo_producto = raw_input("  Tipo - 1)Libro, 2)Electrónico, 3)Ropa \n Selecciona un tipo: ")
-	    # Se valida que el tipo de producto sea uno de los permitidos.
-	    if int(tipo_producto) in Producto.tipos_productos.keys():
-	        break
-	    else:
-	        print "  Error: Tipo de producto no valido. Intente de nuevo."
+		tipo_producto = raw_input("  Tipo - 1)Libro, 2)Electrónico, 3)Ropa \n Selecciona un tipo: ")
+		# Se valida que el tipo de producto sea uno de los permitidos.
+		try:
+		    if int(tipo_producto) in Producto.tipos_productos.keys():
+		        break
+		    else:
+		        print "  Error: Tipo de producto no valido. Intente de nuevo."
+		except ValueError:
+			print "Introduzca un valor númerico especificado en la lista"
+
 	return tipo_producto
 
 def leer_cantidad():
@@ -29,7 +33,6 @@ def leer_cantidad():
 			return cantidad
 		except ValueError:
 			print 'Introduzca un valor entero valido'
-			continue
 
 def leer_precio():
 	while True:
@@ -38,9 +41,8 @@ def leer_precio():
 			return precio
 		except ValueError:
 			print 'Introduzca un valor decimal valido'
-			continue
 
-			
+
 def leer_pedidos_de_archivo():
 	try:
 	    with open('pedidos.txt', 'r') as f:
