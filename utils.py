@@ -2,13 +2,6 @@
 from models import Pedido
 from io_operations import *
 
-def print_order(pedido, numero_pedido):
-	print "\nPedido #%d" % (numero_pedido + 1)	
-	print "  Cliente: %s" % pedido.cliente_nombre
-	print "  Fecha: %s" % pedido.fecha.strftime('%Y-%m-%d')
-	print "  Numero total de productos: %d" % pedido.total_articulos()
-	print "  Total del pedido (con impuestos): $%.2f" % pedido.calcular_total_pedido()
-
 
 #Muestra en consola un resumen de todos los pedidos registrados. 
 def generar_reporte(pedidos_registrados):  
@@ -24,15 +17,9 @@ def generar_reporte(pedidos_registrados):
        	if(len(pedidos_archivo) > 0):
        		hay_pedidos_mostrados = True
 
-       	
-
        	#Por cada línea del archivo(cada pedido) se regresa un diccionario con su información.
-        for i, linea in enumerate(pedidos_archivo):        	
-        	datos_pedido = Pedido.deserializar_linea(linea)
-        	pedido = Pedido(datos_pedido['Cliente'])
-        	for producto in datos_pedido['Productos']:
-        		pedido.agregar_producto(Producto(producto['nombre'], producto['tipo'], producto['cantidad'], producto['precio']))	
-            	print_order(pedido, i)
+        for numero_pedido, linea in enumerate(pedidos_archivo):        	
+            imprimir_pedido(Pedido.deserializar_linea(linea), numero_pedido)
             
     except IOError:
         # Si el archivo no existe, simplemente no se muestra esta seccion.
@@ -43,8 +30,8 @@ def generar_reporte(pedidos_registrados):
         print "No hay pedidos para mostrar."
         return
 
-    for i, pedido in enumerate(pedidos_registrados):
-        print_order(pedido, i + len(pedidos_archivo))
+    for numero_pedido, pedido in enumerate(pedidos_registrados):
+        imprimir_pedido(pedido, numero_pedido + len(pedidos_archivo))
 
     print "\n--- Fin del Reporte ---"
 

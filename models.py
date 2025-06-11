@@ -106,4 +106,8 @@ class Pedido(object):
                 datos_pedido['Productos'] = json.loads(datos_pedido['Productos'])
 
         
-        return datos_pedido
+        pedido = Pedido(datos_pedido['Cliente'])
+        for producto in datos_pedido['Productos']:
+            pedido.agregar_producto(Producto(producto['nombre'], producto['tipo'], producto['cantidad'], producto['precio']))
+    
+        return pedido
