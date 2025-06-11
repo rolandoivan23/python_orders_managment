@@ -8,11 +8,11 @@ def imprimir_menu():
 	print "3. Guardar pedidos y salir"
 
 def imprimir_pedido(pedido, numero_pedido):
-	print "\nPedido #%d" % (numero_pedido + 1)	
-	print "  Cliente: %s" % pedido.cliente_nombre
-	print "  Fecha: %s" % pedido.fecha.strftime('%Y-%m-%d')
-	print "  Numero total de productos: %d" % pedido.total_articulos()
-	print "  Total del pedido (con impuestos): $%.2f" % pedido.calcular_total_pedido()
+	print "\n No: %d | Cliente: %s | Fecha: %s | Cantidad artículos: %d | Total: $%.2f " % (numero_pedido + 1, 
+																							pedido.cliente_nombre, 
+																							pedido.fecha.strftime('%Y-%m-%d'), 
+																							pedido.total_articulos(), 
+																							pedido.calcular_total_pedido())	
     
 def leer_nombre_producto():
 	print "\nAgregando producto al pedido:"
