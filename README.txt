@@ -41,14 +41,32 @@ linux principales.
 
 Pasos para poder correr el programa
 
-sudo apt update
-sudo apt upgrade
-sudo apt-get install python2.7
+	sudo apt update
+	sudo apt upgrade
+	sudo apt-get install python2.7
 
 
-Abra una terminal o linea de comandos en ese directorio.
-Ejecute el siguiente comando:
+	Abra una terminal o linea de comandos en ese directorio.
+	Ejecute el siguiente comando:
 
-    python2.7 main.py
+	    python2.7 main.py
 
-4.  Siga las instrucciones que aparecen en el menu de la consola.
+	 Siga las instrucciones que aparecen en el menu de la consola.
+
+Nota: Lo recomendable es siempre usar un entorno virtual para evitar problemas entre versiónes de librerías o paquetes cuando estemos trabajando con otro proyecto.
+Para este caso con fines prácticos y como es una instalación completamente limpia se uso el interprete directamente.
+
+
+	Alternativa usando IDE PyCharm
+
+		 Prerequisitos, tener preinstado python
+		 	-Windows: bajar el ejecutable e instalarlo (recordar el path de instalación)
+
+		 Instalar el IDE, se recomienda la versión comunity edition
+		 Abrir la carpeta del proyecto
+		 En settings (File -> Settings), sección del proyecto:
+		 	-Click en agregar interprete
+		 	-Seleccionar opción de virtualenv
+		 	-Seleccionar la carpeta deonde se instala python 2.7
+
+		 Ya con esto podremos correr nuestro archivo main.py (click derecho y play)
