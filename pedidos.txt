@@ -1,4 +1,6 @@
-Cliente: a | Fecha: 2025-06-10 22:01:29 | Total: 5.50 | Productos: [{ "nombre": "a", "cantidad": 1, "tipo": "Libro", "precio": 5.500000 }]
-Cliente: b | Fecha: 2025-06-10 22:02:24 | Total: 4.64 | Productos: [{ "nombre": "b", "cantidad": 2, "tipo": "Electrónico", "precio": 2.000000 }]
-Cliente: c | Fecha: 2025-06-10 22:05:06 | Total: 2.00 | Productos: [{ "nombre": "c", "cantidad": 1, "tipo": "Libro", "precio": 1.000000 }, { "nombre": "d", "cantidad": 1, "tipo": "Libro", "precio": 1.000000 }]
-Cliente: Rolando | Fecha: 2025-06-10 22:06:22 | Total: 118.69 | Productos: [{ "nombre": "x", "cantidad": 10, "tipo": "Ropa", "precio": 10.990000 }]
+{"productos": [{"nombre": "a", "precio": 10.0, "tipo": "Libro", "cantidad": 1}, {"nombre": "b", "precio": 2.0, "tipo": "Electr\u00f3nico", "cantidad": 2}], "fecha": "2025-06-12 16:32:22", "total": 14.64, "cliente": "a"}
+{"productos": [{"nombre": "c", "precio": 200.0, "tipo": "Ropa", "cantidad": 3}], "fecha": "2025-06-12 16:38:12", "total": 648.0, "cliente": "c"}
+{"productos": [{"nombre": "b", "precio": 1.0, "tipo": "Libro", "cantidad": 1}], "fecha": "2025-06-12 16:49:56", "total": 1.0, "cliente": "b"}
+{"productos": [{"nombre": "a", "precio": 2.0, "tipo": "Ropa", "cantidad": 2}], "fecha": "2025-06-12 16:51:59", "total": 4.32, "cliente": "a"}
+{"productos": [{"nombre": "a", "precio": 1.0, "tipo": "Libro", "cantidad": 1}], "fecha": "2025-06-12 16:57:44", "total": 1.0, "cliente": "a"}
+{"productos": [{"nombre": "z", "precio": 2.0, "tipo": "Electrónico", "cantidad": 2}], "fecha": "2025-06-12 16:58:10", "total": 4.0, "cliente": "z"}
