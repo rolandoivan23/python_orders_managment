@@ -70,3 +70,13 @@ Para este caso con fines prácticos y como es una instalación completamente lim
 		 	-Seleccionar la carpeta deonde se instala python 2.7
 
 		 Ya con esto podremos correr nuestro archivo main.py (click derecho y play)
+
+
+* Correr los test:
+
+Para correr los test solo se ejecuta su respectivo archivo de la siguiente manera
+
+	python2.7 test_models.py
+
+	Nota: Con estos test podemos asegurar que las funcionalidades principales de nuestras clases siguen con su comportamiento esperado.
+		  Esto ayudó en el refactor de para separar la responsabilidad del formato de representación asegurarnos que no se pompen las funcionalidades básicas.
